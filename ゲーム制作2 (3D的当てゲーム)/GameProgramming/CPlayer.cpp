@@ -3,6 +3,7 @@
 //キークラスのインクルード
 #include "CKey.h"
 #include "CTaskManager.h"
+#include "CUtil.h"
 
 //更新処理
 void CPlayer::Update(){
@@ -39,4 +40,24 @@ void CPlayer::Update(){
 		bullet->Update();
 //		TaskManager.Add(bullet);
 	}
+}
+
+void CPlayer::Render()
+{
+	//親の描画処理
+	CCharacter::Render();
+
+	//2Dの描画開始
+	CUtil::Start2D(-400, 400, -300, 300);
+	//描画色の設定(白)
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	//文字編集エリアの作成
+	char buf[64];
+
+	//Timeの表示
+	//文字列の設定
+	mText.DrawString("Time", 150, -250, 16, 16);
+
+	//2Dの描画終了
+	CUtil::End2D();
 }

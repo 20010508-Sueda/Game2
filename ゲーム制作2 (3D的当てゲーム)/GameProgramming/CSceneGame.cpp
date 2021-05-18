@@ -39,6 +39,13 @@ void CSceneGame::Init() {
 	new CEnemy(&mModelF16, CVector(-30.0f, 3.0f, -20.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 	new CEnemy(&mModelF16, CVector(-10.0f, 3.5f, -15.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 	new CEnemy(&mModelF16, CVector(10.0f, 4.0f, -40.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelF16, CVector(0.0f, 5.0f, 30.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelF16, CVector(10.0f, 3.0f, 20.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelF16, CVector(-10.0f, 7.0f, 10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelF16, CVector(-50.0f, 5.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelF16, CVector(-20.0f, 4.5f, 5.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelF16, CVector(30.0f, 4.5f, 10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelF16, CVector(40.0f, 5.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 }
 
 void CSceneGame::Update() {
