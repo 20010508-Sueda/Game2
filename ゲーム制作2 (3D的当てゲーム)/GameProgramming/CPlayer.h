@@ -17,7 +17,7 @@ public:
 	CPlayer::CPlayer()
 	{
 		//テクスチャファイルの読み込み(1行64列)
-		mText.LoadTexture("font.tga", 1, 64);
+		mText.LoadTexture("FontWhite.tga", 1, 64);
 	}
 };
 

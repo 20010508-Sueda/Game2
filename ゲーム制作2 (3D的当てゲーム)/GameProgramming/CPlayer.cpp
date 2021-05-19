@@ -5,6 +5,8 @@
 #include "CTaskManager.h"
 #include "CUtil.h"
 
+int Time = 120 * 60;
+
 //更新処理
 void CPlayer::Update(){
 	//Aキー入力で回転
@@ -40,6 +42,10 @@ void CPlayer::Update(){
 		bullet->Update();
 //		TaskManager.Add(bullet);
 	}
+
+	if (Time > 0){
+		Time--;
+	}
 }
 
 void CPlayer::Render()
@@ -54,9 +60,21 @@ void CPlayer::Render()
 	//文字編集エリアの作成
 	char buf[64];
 
-	//Timeの表示
+	//残り時間の表示
 	//文字列の設定
-	mText.DrawString("Time", 150, -250, 16, 16);
+	sprintf(buf, "TIME %d", Time / 60);
+	//文字列の描画
+	mText.DrawString(buf, 150, -250, 16, 16);
+
+	//スコアの表示
+	//文字列の設定
+
+
+	//ゲーム終了の表示
+	if (Time == 0){
+		mText.DrawString("FINISH!!", -200, 0, 32, 32);
+		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
+	}
 
 	//2Dの描画終了
 	CUtil::End2D();
