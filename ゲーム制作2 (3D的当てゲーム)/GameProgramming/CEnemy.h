@@ -4,6 +4,8 @@
 #include "CCharacter.h"
 //コライダクラスのインクルード
 #include "CCollider.h"
+//テキストクラスのインクルード
+#include "CText.h"
 
 class CEnemy :public CCharacter{
 public:
@@ -12,7 +14,10 @@ public:
 	CEnemy(CModel*model, CVector position, CVector rotation, CVector scale);
 	//更新処理
 	void Update();
-	
+	//描画処理
+	void Render();
+
+	CText mText;
 	//コライダ
 	CCollider mCollider;
 
