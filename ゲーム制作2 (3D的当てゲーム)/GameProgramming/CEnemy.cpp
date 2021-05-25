@@ -22,9 +22,6 @@ CEnemy::CEnemy(CModel*model, CVector position, CVector rotation, CVector scale)
 
 //更新処理
 void CEnemy::Update(){
-	if (Time > 0){
-		Time--;
-	}
 	//行列を更新
 	CTransform::Update();
 	//位置を移動
@@ -69,6 +66,11 @@ void CEnemy::Render()
 	//残り時間の表示
 	//文字列の設定
 	sprintf(buf, "TIME %d", Time / 60);
+
+	if (Time > 0){
+		Time--;
+	}
+
 	//文字列の描画
 	mText.DrawString(buf, 150, -250, 16, 16);
 
