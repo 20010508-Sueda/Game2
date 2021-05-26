@@ -11,8 +11,8 @@
 #include "CBillBoard.h"
 #include "CCamera.h"
 
-//F16モデル
-CModel mModelF16;
+//Sphereモデル
+CModel mModelSphere;
 
 void CSceneGame::Init() {
 	mEye = CVector(1.0f, 2.0f, 3.0f);
@@ -31,21 +31,21 @@ void CSceneGame::Init() {
 	mPlayer.mRotation = CVector(0.0f, 180.0f, 0.0f);
 
 	//F16モデルの読み込み
-	mModelF16.Load("f16.obj", "f16.mtl");
+	mModelSphere.Load("sphere.obj", "sphere.mtl");
 
 	//敵機のインスタンス作成
-	new CEnemy(&mModelF16, CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelF16, CVector(30.0f, 10.0f, -30.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelF16, CVector(-30.0f, 3.0f, -20.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelF16, CVector(-10.0f, 3.5f, -15.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelF16, CVector(10.0f, 4.0f, -40.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelF16, CVector(0.0f, 5.0f, 30.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelF16, CVector(10.0f, 3.0f, 20.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelF16, CVector(-10.0f, 7.0f, 10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelF16, CVector(-40.0f, 5.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelF16, CVector(-20.0f, 4.5f, 5.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelF16, CVector(30.0f, 4.5f, 10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelF16, CVector(40.0f, 5.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(30.0f, 10.0f, -30.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(-30.0f, 3.0f, -20.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(-10.0f, 3.5f, -15.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(10.0f, 4.0f, -40.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, 30.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(10.0f, 3.0f, 20.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(-10.0f, 7.0f, 10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(-40.0f, 5.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(-20.0f, 4.5f, 5.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(30.0f, 4.5f, 10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(40.0f, 5.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 }
 
 void CSceneGame::Update() {
