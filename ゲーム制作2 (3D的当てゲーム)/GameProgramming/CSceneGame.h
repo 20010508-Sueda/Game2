@@ -5,6 +5,7 @@
 #include "CModel.h"
 #include "CCharacter.h"
 #include "CPlayer.h"
+#include "CText.h"
 
 /*
 ゲームのシーン
@@ -16,6 +17,8 @@ public:
 	//更新処理のオーバーライド
 	void Update();
 
+	void Render();
+
 	CVector mEye;
 
 	//モデルクラスのインスタンス作成
@@ -24,6 +27,10 @@ public:
 	CModel mBackGround; //背景モデル
 
 	CPlayer mPlayer;
+
+	CText mText;
+
+	CSceneGame();
 };
 
 #endif

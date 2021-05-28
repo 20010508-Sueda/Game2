@@ -10,9 +10,17 @@
 #include "CCollisionManager.h"
 #include "CBillBoard.h"
 #include "CCamera.h"
+#include "CUtil.h"
 
 //Sphereモデル
 CModel mModelSphere;
+int Time = 120 * 60;
+
+CSceneGame::CSceneGame()
+{
+	//テクスチャファイルの読み込み(1行64列)
+	mText.LoadTexture("FontWhite.tga", 1, 64);
+}
 
 void CSceneGame::Init() {
 	mEye = CVector(1.0f, 2.0f, 3.0f);
@@ -34,7 +42,7 @@ void CSceneGame::Init() {
 	mModelSphere.Load("sphere.obj", "sphere.mtl");
 
 	//敵機のインスタンス作成
-	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	new CEnemy(&mModelSphere, CVector(30.0f, 10.0f, -30.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 	new CEnemy(&mModelSphere, CVector(-30.0f, 3.0f, -20.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 	new CEnemy(&mModelSphere, CVector(-10.0f, 3.5f, -15.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
@@ -113,4 +121,40 @@ void CSceneGame::Update() {
 
 	//コリジョンマネージャの描画
 	CCollisionManager::Get()->Render();
+}
+
+void CSceneGame::Render(){
+	//親の描画処理
+	CCharacter::Render();
+
+	//2Dの描画開始
+	CUtil::Start2D(-400, 400, -300, 300);
+	//描画色の設定(白)
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	//文字編集エリアの作成
+	char buf[64];
+
+	//残り時間の表示
+	//文字列の設定
+	sprintf(buf, "TIME %d", Time / 60);
+
+	if (Time > 0){
+		Time--;
+	}
+
+	//文字列の描画
+	mText.DrawString(buf, 150, -250, 16, 16);
+
+	//スコアの表示
+	//文字列の設定
+
+
+	//ゲーム終了の表示
+	if (Time == 0){
+		mText.DrawString("FINISH!!", -200, 0, 32, 32);
+		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
+	}
+
+	//2Dの描画終了
+	CUtil::End2D();
 }
