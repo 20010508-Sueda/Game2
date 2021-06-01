@@ -19,6 +19,8 @@ public:
 
 	void Render();
 
+	static int EnemyCount;
+
 	CVector mEye;
 
 	//モデルクラスのインスタンス作成

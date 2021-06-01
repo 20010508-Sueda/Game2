@@ -15,6 +15,7 @@
 //Sphereモデル
 CModel mModelSphere;
 int Time = 120 * 60;
+int CSceneGame::EnemyCount = 0;
 
 CSceneGame::CSceneGame()
 {
@@ -30,6 +31,8 @@ void CSceneGame::Init() {
 
 	mBackGround.Load("sky.obj", "sky.mtl");
 
+	EnemyCount = 0;
+
 	CMatrix matrix;
 	matrix.Print();
 
@@ -42,18 +45,30 @@ void CSceneGame::Init() {
 	mModelSphere.Load("sphere.obj", "sphere.mtl");
 
 	//敵機のインスタンス作成
-	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
-	new CEnemy(&mModelSphere, CVector(30.0f, 10.0f, -30.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelSphere, CVector(-30.0f, 3.0f, -20.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelSphere, CVector(-10.0f, 3.5f, -15.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelSphere, CVector(10.0f, 4.0f, -40.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, 30.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelSphere, CVector(10.0f, 3.0f, 20.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelSphere, CVector(-10.0f, 7.0f, 10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelSphere, CVector(-40.0f, 5.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelSphere, CVector(-20.0f, 4.5f, 5.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelSphere, CVector(30.0f, 4.5f, 10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy(&mModelSphere, CVector(40.0f, 5.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
+	new CEnemy(&mModelSphere, CVector(30.0f, 10.0f, -30.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
+	new CEnemy(&mModelSphere, CVector(-30.0f, 3.0f, -20.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
+	new CEnemy(&mModelSphere, CVector(-10.0f, 3.5f, -15.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
+	new CEnemy(&mModelSphere, CVector(10.0f, 4.0f, -40.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
+	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, 30.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
+	new CEnemy(&mModelSphere, CVector(10.0f, 3.0f, 20.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
+	new CEnemy(&mModelSphere, CVector(-10.0f, 7.0f, 10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
+	new CEnemy(&mModelSphere, CVector(-40.0f, 5.0f, -10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
+	new CEnemy(&mModelSphere, CVector(-20.0f, 4.5f, 5.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
+	new CEnemy(&mModelSphere, CVector(30.0f, 4.5f, 10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
+	new CEnemy(&mModelSphere, CVector(40.0f, 5.0f, -10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount++;
 }
 
 void CSceneGame::Update() {
@@ -121,12 +136,12 @@ void CSceneGame::Update() {
 
 	//コリジョンマネージャの描画
 	CCollisionManager::Get()->Render();
+
+	//親の描画処理
+	CSceneGame::Render();
 }
 
 void CSceneGame::Render(){
-	//親の描画処理
-	CCharacter::Render();
-
 	//2Dの描画開始
 	CUtil::Start2D(-400, 400, -300, 300);
 	//描画色の設定(白)
@@ -153,6 +168,13 @@ void CSceneGame::Render(){
 	if (Time == 0){
 		mText.DrawString("FINISH!!", -200, 0, 32, 32);
 		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
+	}
+
+	//ゲームクリアの表示
+	if (EnemyCount == 0){
+		mText.DrawString("GAME CLEAR!", -300, 20, 32, 32);
+		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
+		Time++;
 	}
 
 	//2Dの描画終了
