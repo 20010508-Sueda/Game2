@@ -1,6 +1,7 @@
 #include "CEnemy2.h"
 #include "CEffect.h"
 #include "CTaskManager.h"
+#include "CSceneGame.h"
 #define HP 1  //耐久値
 #define OBJ "f16.obj"  //モデルのファイル
 #define MTL "f16.mtl"  //モデルのマテリアルファイル
@@ -48,6 +49,8 @@ void CEnemy2::Collision(CCollider*m, CCollider*o){
 		//削除mEnabled = false;
 		mHp--; //ヒットポイントの減算
 		if (mHp <= 0){
+			CSceneGame::EnemyCount--;
+			CSceneGame::Score += 50;
 			mEnabled = false;
 		}
 	}

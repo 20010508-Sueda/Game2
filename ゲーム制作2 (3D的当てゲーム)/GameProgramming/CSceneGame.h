@@ -21,6 +21,10 @@ public:
 
 	static int EnemyCount;
 
+	static int Score;
+
+	int Count;
+
 	CVector mEye;
 
 	//モデルクラスのインスタンス作成

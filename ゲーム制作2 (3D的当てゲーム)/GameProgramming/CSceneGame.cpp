@@ -15,12 +15,15 @@
 //Sphereモデル
 CModel mModelSphere;
 int Time = 120 * 60;
+int CSceneGame::Score = 0;
 int CSceneGame::EnemyCount = 0;
 
 CSceneGame::CSceneGame()
 {
 	//テクスチャファイルの読み込み(1行64列)
 	mText.LoadTexture("FontWhite.tga", 1, 64);
+
+	Count = 1;
 }
 
 void CSceneGame::Init() {
@@ -41,7 +44,7 @@ void CSceneGame::Init() {
 	mPlayer.mPosition = CVector(0.0f, 0.0f, -3.0f);
 	mPlayer.mRotation = CVector(0.0f, 180.0f, 0.0f);
 
-	//F16モデルの読み込み
+	//sphereモデル(敵1)の読み込み
 	mModelSphere.Load("sphere.obj", "sphere.mtl");
 
 	//敵機のインスタンス作成
@@ -156,13 +159,15 @@ void CSceneGame::Render(){
 	if (Time > 0){
 		Time--;
 	}
-
 	//文字列の描画
 	mText.DrawString(buf, 150, -250, 16, 16);
 
 	//スコアの表示
 	//文字列の設定
-
+	char buf2[5000];
+	sprintf(buf2, "SCORE %d", Score);
+	//文字列の描画
+	mText.DrawString(buf2, -375, -250, 16, 16);
 
 	//ゲーム終了の表示
 	if (Time == 0){
@@ -175,6 +180,14 @@ void CSceneGame::Render(){
 		mText.DrawString("GAME CLEAR!", -300, 20, 32, 32);
 		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
 		Time++;
+	}
+
+	//クリア時にスコア算出
+	if (EnemyCount == 0){
+		if (Count > 0){
+			CSceneGame::Score += Time / 10;
+			Count--;
+		}
 	}
 
 	//2Dの描画終了
