@@ -1,18 +1,18 @@
-#ifndef CENEMY2_H
-#define CENEMY2_H
+#ifndef CENEMY3_H
+#define CENEMY3_H
 //キャラクタクラスのインクルード
 #include "CCharacter.h"
 //コライダクラスのインクルード
 #include "CCollider.h"
 
-class CEnemy2 :public CCharacter{
+class CEnemy3 :public CCharacter{
 public:
 	//モデルデータ
 	static CModel mModel;
 	//コンストラクタ
-	CEnemy2();
+	CEnemy3();
 	//CEnemy(位置、回転、拡縮)
-	CEnemy2(const CVector& position,const CVector& rotation,const CVector& scale);
+	CEnemy3(const CVector& position, const CVector& rotation, const CVector& scale);
 
 	//コライダ
 	CCollider mCollider;

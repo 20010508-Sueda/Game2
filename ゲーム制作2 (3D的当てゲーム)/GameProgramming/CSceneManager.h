@@ -16,6 +16,8 @@ public:
 	void Init();
 	//更新処理
 	void Update();
+	//シーンの識別
+	CScene::EScene mScene;
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "CEnemy.h"
 #include "CEffect.h"
 #include "CSceneGame.h"
+#include "CSceneGame2.h"
 #define HP 1  //耐久値
 
 //コンストラクタ
@@ -44,6 +45,8 @@ void CEnemy::Collision(CCollider*m, CCollider*o){
 		if (mHp <= 0){
 			CSceneGame::EnemyCount--;
 			CSceneGame::Score += 50;
+			CSceneGame2::EnemyCount2--;
+			CSceneGame2::Score2 += 50;
 			mEnabled = false;
 		}
 	}

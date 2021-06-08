@@ -14,6 +14,17 @@ public:
 	//次のシーンの取得
 	//virtual EScene GetNextScene() = 0;
 	virtual ~CScene() {}	//デストラクタの定義
+
+	//シーンの識別子
+	enum EScene{
+		EGAME,   //ゲーム
+		EGAME2,
+		ETITLE,  //タイトル
+	};
+	//次のシーン
+	EScene mScene;
+	//次のシーンの取得
+	virtual EScene GetNextScene() = 0;
 };
 
 

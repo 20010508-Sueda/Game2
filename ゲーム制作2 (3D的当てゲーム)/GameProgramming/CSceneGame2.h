@@ -1,5 +1,5 @@
-#ifndef CSCENEGAME_H
-#define CSCENEGAME_H
+#ifndef CSCENEGAME2_H
+#define CSCENEGAME2_H
 #include "CScene.h"
 #include "CVector.h"
 #include "CModel.h"
@@ -10,7 +10,7 @@
 /*
 ゲームのシーン
 */
-class CSceneGame : public CScene {
+class CSceneGame2 : public CScene {
 public:
 	//初期化処理のオーバーライド
 	void Init();
@@ -19,13 +19,13 @@ public:
 
 	void Render();
 
-	static int Time;
+	static int Time2;
 
-	static int EnemyCount;
+	static int EnemyCount2;
 
-	static int Score;
+	static int Score2;
 
-	int Count;
+	int Count2;
 
 	CVector mEye;
 
@@ -38,7 +38,7 @@ public:
 
 	CText mText;
 
-	CSceneGame();
+	CSceneGame2();
 
 	//次のシーンの取得
 	EScene GetNextScene();

@@ -1,17 +1,16 @@
-#include "CEnemy2.h"
+#include "CEnemy3.h"
 #include "CEffect.h"
 #include "CTaskManager.h"
-#include "CSceneGame.h"
 #include "CSceneGame2.h"
 #define HP 1  //耐久値
 #define OBJ "sphere.obj"  //モデルのファイル
-#define MTL "sphere2.mtl"  //モデルのマテリアルファイル
+#define MTL "sphere.mtl"  //モデルのマテリアルファイル
 
-CModel CEnemy2::mModel;   //モデルデータ作成
+CModel CEnemy3::mModel;   //モデルデータ作成
 
 //デフォルトコンストラクタ
-CEnemy2::CEnemy2()
-:mCollider(this, &mMatrix, CVector(0.0f,0.0f,0.0f),0.4f)
+CEnemy3::CEnemy3()
+:mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.4f)
 {
 	//モデルがないときは読み込む
 	if (mModel.mTriangles.size() == 0)
@@ -24,8 +23,8 @@ CEnemy2::CEnemy2()
 
 //コンストラクタ
 //CEnemy(位置、回転、拡縮)
-CEnemy2::CEnemy2(const CVector& position,const CVector& rotation,const CVector& scale)
-:CEnemy2()
+CEnemy3::CEnemy3(const CVector& position, const CVector& rotation, const CVector& scale)
+:CEnemy3()
 {
 	//位置、回転、拡縮を設定する
 	mPosition = position;
@@ -38,15 +37,13 @@ CEnemy2::CEnemy2(const CVector& position,const CVector& rotation,const CVector& 
 	CTaskManager::Get()->Add(this); //追加する
 }
 
-void CEnemy2::Collision(CCollider*m, CCollider*o){
+void CEnemy3::Collision(CCollider*m, CCollider*o){
 	if (CCollider::Collision(m, o)){
 		//エフェクト生成
 		new CEffect(o->mpParent->mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
 		//削除mEnabled = false;
 		mHp--; //ヒットポイントの減算
 		if (mHp <= 0){
-			CSceneGame::EnemyCount--;
-			CSceneGame::Score += 100;
 			CSceneGame2::EnemyCount2--;
 			CSceneGame2::Score2 += 100;
 			mEnabled = false;

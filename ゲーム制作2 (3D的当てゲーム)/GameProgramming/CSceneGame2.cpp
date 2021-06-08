@@ -1,4 +1,4 @@
-#include "CSceneGame.h"
+#include "CSceneGame2.h"
 #include "glut.h"
 #include "CVector.h"
 #include "CTriangle.h"
@@ -12,22 +12,23 @@
 #include "CCamera.h"
 #include "CUtil.h"
 #include "CEnemy2.h"
+#include "CEnemy3.h"
 
 //Sphereモデル
-CModel mModelSphere;
-int CSceneGame::Time = 120 * 60;
-int CSceneGame::Score = 0;
-int CSceneGame::EnemyCount = 0;
+CModel mModelSphere2;
+int CSceneGame2::Time2 = 120 * 60;
+int CSceneGame2::Score2 = 0;
+int CSceneGame2::EnemyCount2 = 0;
 
-CSceneGame::CSceneGame()
+CSceneGame2::CSceneGame2()
 {
 	//テクスチャファイルの読み込み(1行64列)
 	mText.LoadTexture("FontWhite.tga", 1, 64);
 
-	Count = 1;
+	Count2 = 1;
 }
 
-void CSceneGame::Init() {
+void CSceneGame2::Init() {
 	mEye = CVector(1.0f, 2.0f, 3.0f);
 
 	//モデルファイルの入力
@@ -35,7 +36,7 @@ void CSceneGame::Init() {
 
 	mBackGround.Load("sky.obj", "sky.mtl");
 
-	EnemyCount = 0;
+	EnemyCount2 = 0;
 
 	CMatrix matrix;
 	matrix.Print();
@@ -46,39 +47,39 @@ void CSceneGame::Init() {
 	mPlayer.mRotation = CVector(0.0f, 180.0f, 0.0f);
 
 	//sphereモデル(敵1)の読み込み
-	mModelSphere.Load("sphere.obj", "sphere.mtl");
+	mModelSphere2.Load("sphere.obj", "sphere.mtl");
 
 	//敵機のインスタンス作成
-	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(40.0f, 5.0f, -10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(-30.0f, 3.0f, -20.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(-10.0f, 3.5f, -15.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(10.0f, 3.0f, 20.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(-10.0f, 7.0f, 10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(-20.0f, 4.5f, 5.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(30.0f, 4.5f, 10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
+	new CEnemy(&mModelSphere2, CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount2++;
+	new CEnemy(&mModelSphere2, CVector(40.0f, 5.0f, -10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount2++;
+	new CEnemy(&mModelSphere2, CVector(-30.0f, 3.0f, -20.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount2++;
+	new CEnemy(&mModelSphere2, CVector(-10.0f, 3.5f, -15.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount2++;
+	new CEnemy(&mModelSphere2, CVector(10.0f, 3.0f, 20.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount2++;
+	new CEnemy(&mModelSphere2, CVector(-10.0f, 7.0f, 10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount2++;
+	new CEnemy(&mModelSphere2, CVector(-20.0f, 4.5f, 5.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount2++;
+	new CEnemy(&mModelSphere2, CVector(30.0f, 4.5f, 10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	EnemyCount2++;
 	new CEnemy2(CVector(10.0f, 4.0f, -40.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
+	EnemyCount2++;
 	new CEnemy2(CVector(0.0f, 5.0f, 30.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
+	EnemyCount2++;
 	new CEnemy2(CVector(-40.0f, 5.0f, -10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
+	EnemyCount2++;
 	new CEnemy2(CVector(30.0f, 10.0f, -30.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
-	EnemyCount++;
+	EnemyCount2++;
 
 	//シーンの設定
-	mScene = EGAME;
+	mScene = EGAME2;
 }
 
-void CSceneGame::Update() {
+void CSceneGame2::Update() {
 	//タスクマネージャの更新
 	CTaskManager::Get()->Update();
 	//コリジョンマネージャの衝突処理
@@ -129,7 +130,7 @@ void CSceneGame::Update() {
 	//上方向を求める
 	u = CVector(0, 1, 0)*mPlayer.mMatrixRotate;
 	//カメラの設定
-//	gluLookAt(e.mX, e.mY, e.mZ, c.mX, c.mY, c.mZ, u.mX, u.mY, u.mZ);
+	//	gluLookAt(e.mX, e.mY, e.mZ, c.mX, c.mY, c.mZ, u.mX, u.mY, u.mZ);
 	//カメラクラスの設定
 	Camera.Set(e, c, u);
 	Camera.Render();
@@ -145,10 +146,10 @@ void CSceneGame::Update() {
 	CCollisionManager::Get()->Render();
 
 	//親の描画処理
-	CSceneGame::Render();
+	CSceneGame2::Render();
 }
 
-void CSceneGame::Render(){
+void CSceneGame2::Render(){
 	//2Dの描画開始
 	CUtil::Start2D(-400, 400, -300, 300);
 	//描画色の設定(白)
@@ -158,10 +159,10 @@ void CSceneGame::Render(){
 
 	//残り時間の表示
 	//文字列の設定
-	sprintf(buf, "TIME %d", Time / 60);
+	sprintf(buf, "TIME %d", Time2 / 60);
 
-	if (Time > 0){
-		Time--;
+	if (Time2 > 0){
+		Time2--;
 	}
 	//文字列の描画
 	mText.DrawString(buf, 150, -250, 16, 16);
@@ -169,36 +170,34 @@ void CSceneGame::Render(){
 	//スコアの表示
 	//文字列の設定
 	char buf2[5000];
-	sprintf(buf2, "SCORE %d", Score);
+	sprintf(buf2, "SCORE %d", Score2);
 	//文字列の描画
 	mText.DrawString(buf2, -375, -250, 16, 16);
 
 	//ゲーム終了の表示
-	if (Time == 0){
+	if (Time2 == 0){
 		mText.DrawString("FINISH!!", -200, 0, 32, 32);
-		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
-		mText.DrawString("PUSH ENTER KEY", -125, -110, 10, 10);
+		mText.DrawString("PUSH ENTER KEY", -190, -60, 15, 15);
 		if (CKey::Once(VK_RETURN)){
-			mScene = EGAME2;
+			mScene = ETITLE;
 		}
 	}
 
 	//ゲームクリアの表示
-	if (EnemyCount == 0){
+	if (EnemyCount2 == 0){
 		mText.DrawString("GAME CLEAR!", -300, 20, 32, 32);
-		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
-		mText.DrawString("PUSH ENTER KEY", -125, -110, 10, 10);
-		Time++;
+		mText.DrawString("PUSH ENTER KEY", -190, -60, 15, 15);
+		Time2++;
 		if (CKey::Once(VK_RETURN)){
-			mScene = EGAME2;
+			mScene = ETITLE;
 		}
 	}
 
 	//クリア時にスコア算出
-	if (EnemyCount == 0){
-		if (Count > 0){
-			CSceneGame::Score += Time / 10;
-			Count--;
+	if (EnemyCount2 == 0){
+		if (Count2 > 0){
+			CSceneGame2::Score2 += Time2 / 10;
+			Count2--;
 		}
 	}
 
@@ -207,6 +206,6 @@ void CSceneGame::Render(){
 }
 
 //次のシーンの取得
-CScene::EScene CSceneGame::GetNextScene(){
+CScene::EScene CSceneGame2::GetNextScene(){
 	return mScene;
 }
