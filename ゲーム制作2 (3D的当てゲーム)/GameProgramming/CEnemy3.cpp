@@ -37,6 +37,14 @@ CEnemy3::CEnemy3(const CVector& position, const CVector& rotation, const CVector
 	CTaskManager::Get()->Add(this); //追加する
 }
 
+void CEnemy3::Update(){
+	mPosition.mX -= 0.1;
+	if (-mPosition.mX > 5){
+		mPosition = CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.4f, 0.4f, 0.4f);
+	}
+	CTransform::Update();
+}
+
 void CEnemy3::Collision(CCollider*m, CCollider*o){
 	if (CCollider::Collision(m, o)){
 		//エフェクト生成

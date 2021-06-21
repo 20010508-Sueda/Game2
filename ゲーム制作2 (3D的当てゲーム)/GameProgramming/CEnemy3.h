@@ -19,6 +19,7 @@ public:
 
 	void Collision(CCollider*m, CCollider*o);
 	void TaskCollision();
+	void Update();
 
 	int mHp;  //ヒットポイント
 };
