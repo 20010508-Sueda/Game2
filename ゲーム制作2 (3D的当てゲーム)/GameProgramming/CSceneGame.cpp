@@ -27,6 +27,10 @@ CSceneGame::CSceneGame()
 	Count = 1;
 }
 
+CSceneGame::~CSceneGame(){
+	CTaskManager::Get()->Destory();
+}
+
 void CSceneGame::Init() {
 	mEye = CVector(1.0f, 2.0f, 3.0f);
 
@@ -35,15 +39,18 @@ void CSceneGame::Init() {
 
 	mBackGround.Load("sky.obj", "sky.mtl");
 
+	Time = 120 * 60;
+	Score = 0;
 	EnemyCount = 0;
 
 	CMatrix matrix;
 	matrix.Print();
 
-	mPlayer.mpModel = &mModel;
-	mPlayer.mScale = CVector(0.1f, 0.1f, 0.1f);
-	mPlayer.mPosition = CVector(0.0f, 0.0f, -3.0f);
-	mPlayer.mRotation = CVector(0.0f, 180.0f, 0.0f);
+	CPlayer*mPlayer = new CPlayer();
+	mPlayer->mpModel = &mModel;
+	mPlayer->mScale = CVector(0.1f, 0.1f, 0.1f);
+	mPlayer->mPosition = CVector(0.0f, 0.0f, -3.0f);
+	mPlayer->mRotation = CVector(0.0f, 180.0f, 0.0f);
 
 	//sphereƒ‚ƒfƒ‹(“G1)‚Ì“Ç‚İ‚İ
 	mModelSphere.Load("sphere.obj", "sphere.mtl");

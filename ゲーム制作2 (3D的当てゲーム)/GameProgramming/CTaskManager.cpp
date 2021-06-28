@@ -85,3 +85,17 @@ void CTaskManager::Delete(){
 		}
 	}
 }
+
+void CTaskManager::Destory(){
+	//ポインタ変数タスクを作成し、リストの先頭アドレスを代入する
+	CTask*task = mHead.mpNext;
+	//ポインタ変数タスクの次のポインタがfalseで無い間、繰り返す
+	while (task->mpNext){
+		//ポインタ変数削除を作成し、ポインタ変数タスクを代入する
+		CTask*del = task;
+		//ポインタ変数タスクに、ポインタ変数タスクの次のポインタを代入する
+		task = task->mpNext;
+		//deleteポインタ変数削除
+		delete del;
+	}
+}

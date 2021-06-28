@@ -31,6 +31,8 @@ public:
 
 	//タスクの削除
 	void Delete();
+
+	void Destory();
 };
 
 //タスクマネージャの外部参照

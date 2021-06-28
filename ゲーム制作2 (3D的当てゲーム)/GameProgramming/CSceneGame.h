@@ -40,6 +40,8 @@ public:
 
 	CSceneGame();
 
+	~CSceneGame();
+
 	//Ÿ‚ÌƒV[ƒ“‚Ìæ“¾
 	EScene GetNextScene();
 };

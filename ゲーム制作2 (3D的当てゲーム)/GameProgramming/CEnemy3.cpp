@@ -53,7 +53,7 @@ void CEnemy3::Collision(CCollider*m, CCollider*o){
 		mHp--; //ヒットポイントの減算
 		if (mHp <= 0){
 			CSceneGame2::EnemyCount2--;
-			CSceneGame2::Score2 += 100;
+			CSceneGame2::Score2 += 50;
 			mEnabled = false;
 		}
 	}
