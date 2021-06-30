@@ -47,7 +47,7 @@ void CSceneGame2::Init() {
 	CMatrix matrix;
 	matrix.Print();
 
-	CPlayer*mPlayer = new CPlayer();
+	mPlayer = new CPlayer();
 	mPlayer->mpModel = &mModel;
 	mPlayer->mScale = CVector(0.1f, 0.1f, 0.1f);
 	mPlayer->mPosition = CVector(0.0f, 0.0f, -3.0f);
@@ -131,11 +131,11 @@ void CSceneGame2::Update() {
 	//カメラのパラメータを作成する
 	CVector e, c, u; //視点、注視点、上方向
 	//視点を求める
-	e = CVector(0, 10, -30)*mPlayer.mMatrix;
+	e = CVector(0, 10, -30)*mPlayer->mMatrix;
 	//注視点を求める
-	c = mPlayer.mPosition;
+	c = mPlayer->mPosition;
 	//上方向を求める
-	u = CVector(0, 1, 0)*mPlayer.mMatrixRotate;
+	u = CVector(0, 1, 0)*mPlayer->mMatrixRotate;
 	//カメラの設定
 	//	gluLookAt(e.mX, e.mY, e.mZ, c.mX, c.mY, c.mZ, u.mX, u.mY, u.mZ);
 	//カメラクラスの設定

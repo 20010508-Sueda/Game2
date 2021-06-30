@@ -34,7 +34,7 @@ public:
 
 	CModel mBackGround; //”wŒiƒ‚ƒfƒ‹
 
-	CPlayer mPlayer;
+	CPlayer*mPlayer;
 
 	CText mText;
 
