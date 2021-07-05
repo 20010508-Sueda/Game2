@@ -10,7 +10,7 @@ CModel CEnemy3::mModel;   //モデルデータ作成
 
 //デフォルトコンストラクタ
 CEnemy3::CEnemy3()
-:mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.4f)
+:mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
 {
 	//モデルがないときは読み込む
 	if (mModel.mTriangles.size() == 0)
@@ -40,7 +40,7 @@ CEnemy3::CEnemy3(const CVector& position, const CVector& rotation, const CVector
 void CEnemy3::Update(){
 	mPosition.mX -= 0.1;
 	if (-mPosition.mX > 5){
-		mPosition = CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.4f, 0.4f, 0.4f);
+		mPosition = CVector(0.0f, 5.0f, -25.0f), CVector(), CVector(0.5f, 0.5f, 0.5f);
 	}
 	CTransform::Update();
 }

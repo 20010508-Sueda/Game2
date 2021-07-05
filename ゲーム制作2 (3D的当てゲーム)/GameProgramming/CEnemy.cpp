@@ -7,7 +7,7 @@
 //コンストラクタ
 //CEnemy(モデル、位置、回転、拡縮)
 CEnemy::CEnemy(CModel*model, CVector position, CVector rotation, CVector scale)
-:mCollider(this, &mMatrix, CVector(0.0f,0.0f,0.0f),0.4f)
+:mCollider(this, &mMatrix, CVector(0.0f,0.0f,0.0f),0.5f)
 , mHp(HP)
 {
 	//モデル、位置、回転、拡縮を設定する

@@ -31,7 +31,7 @@ void CPlayer::Update(){
 	CTransform::Update();
 
 	//スペースキー入力で弾発射
-	if (CKey::Push(VK_SPACE)){
+	if (CKey::Once(VK_SPACE)){
 		CBullet*bullet = new CBullet();
 		bullet->Set(0.1f, 1.5f);
 		bullet->mPosition = CVector(0.0f, 0.0f, 10.0f)*mMatrix;

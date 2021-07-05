@@ -56,29 +56,29 @@ void CSceneGame::Init() {
 	mModelSphere.Load("sphere.obj", "sphere.mtl");
 
 	//敵機のインスタンス作成
-	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, -25.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(40.0f, 5.0f, -10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy(&mModelSphere, CVector(20.0f, 5.0f, -10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(-30.0f, 3.0f, -20.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy(&mModelSphere, CVector(-15.0f, 7.0f, -20.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(-10.0f, 3.5f, -15.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy(&mModelSphere, CVector(-5.0f, 3.5f, -15.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(10.0f, 3.0f, 20.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy(&mModelSphere, CVector(10.0f, 3.0f, 10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(-10.0f, 7.0f, 10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy(&mModelSphere, CVector(-10.0f, 7.0f, 10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(-20.0f, 4.5f, 5.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy(&mModelSphere, CVector(-20.0f, 4.5f, 5.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
-	new CEnemy(&mModelSphere, CVector(30.0f, 4.5f, 10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy(&mModelSphere, CVector(20.0f, 4.5f, 10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
-	new CEnemy2(CVector(10.0f, 4.0f, -40.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy2(CVector(10.0f, 4.0f, -40.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
-	new CEnemy2(CVector(0.0f, 5.0f, 30.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy2(CVector(0.0f, 5.0f, 30.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
-	new CEnemy2(CVector(-40.0f, 5.0f, -10.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy2(CVector(-40.0f, 5.0f, -10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
-	new CEnemy2(CVector(30.0f, 10.0f, -30.0f), CVector(), CVector(0.4f, 0.4f, 0.4f));
+	new CEnemy2(CVector(30.0f, 10.0f, -30.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
 
 	//シーンの設定
@@ -180,7 +180,7 @@ void CSceneGame::Render(){
 	//文字列の描画
 	mText.DrawString(buf2, -375, -250, 16, 16);
 
-	//ゲーム終了の表示
+	//ゲーム終了(時間内に全ての的を消せなかった場合)の表示
 	if (Time == 0){
 		mText.DrawString("FINISH!!", -200, 0, 32, 32);
 		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
@@ -190,9 +190,9 @@ void CSceneGame::Render(){
 		}
 	}
 
-	//ゲームクリアの表示
+	//ゲーム終了(時間内に全ての的を消した場合)の表示
 	if (EnemyCount == 0){
-		mText.DrawString("GAME CLEAR!", -300, 20, 32, 32);
+		mText.DrawString("FINISH!!", -200, 0, 32, 32);
 		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
 		mText.DrawString("PUSH ENTER KEY", -125, -110, 10, 10);
 		Time++;

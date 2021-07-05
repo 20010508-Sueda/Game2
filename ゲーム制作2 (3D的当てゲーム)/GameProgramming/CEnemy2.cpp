@@ -3,7 +3,7 @@
 #include "CTaskManager.h"
 #include "CSceneGame.h"
 #include "CSceneGame2.h"
-#define HP 1  //耐久値
+#define HP 2  //耐久値
 #define OBJ "sphere.obj"  //モデルのファイル
 #define MTL "sphere2.mtl"  //モデルのマテリアルファイル
 
@@ -11,7 +11,8 @@ CModel CEnemy2::mModel;   //モデルデータ作成
 
 //デフォルトコンストラクタ
 CEnemy2::CEnemy2()
-:mCollider(this, &mMatrix, CVector(0.0f,0.0f,0.0f),0.4f)
+:mCollider(this, &mMatrix, CVector(0.0f,0.0f,0.0f),0.5f)
+, mHp(HP)
 {
 	//モデルがないときは読み込む
 	if (mModel.mTriangles.size() == 0)
