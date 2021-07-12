@@ -12,6 +12,7 @@
 #include "CCamera.h"
 #include "CUtil.h"
 #include "CEnemy2.h"
+#include "CEnemy3.h"
 
 //Sphereモデル
 CModel mModelSphere;
@@ -56,7 +57,7 @@ void CSceneGame::Init() {
 	mModelSphere.Load("sphere.obj", "sphere.mtl");
 
 	//敵機のインスタンス作成
-	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, -25.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
+	new CEnemy3(CVector(0.0f, 5.0f, -25.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
 	new CEnemy(&mModelSphere, CVector(20.0f, 5.0f, -10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;

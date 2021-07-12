@@ -7,6 +7,7 @@
 #define MTL "sphere.mtl"  //モデルのマテリアルファイル
 
 CModel CEnemy3::mModel;   //モデルデータ作成
+int CountFrame;           //敵の動きの反転
 
 //デフォルトコンストラクタ
 CEnemy3::CEnemy3()
@@ -38,9 +39,14 @@ CEnemy3::CEnemy3(const CVector& position, const CVector& rotation, const CVector
 }
 
 void CEnemy3::Update(){
-	mPosition.mX -= 0.1;
-	if (-mPosition.mX > 5){
-		mPosition = CVector(0.0f, 5.0f, -25.0f), CVector(), CVector(0.5f, 0.5f, 0.5f);
+	CountFrame++;
+	if (CountFrame > 120 == 0){
+		if (CountFrame <= 60){
+			mPosition.mX -= 0.1f;
+		}
+		else{
+			mPosition.mX += 0.1f;
+		}
 	}
 	CTransform::Update();
 }
