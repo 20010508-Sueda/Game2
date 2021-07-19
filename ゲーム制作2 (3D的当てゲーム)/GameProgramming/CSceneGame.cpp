@@ -12,13 +12,18 @@
 #include "CCamera.h"
 #include "CUtil.h"
 #include "CEnemy2.h"
-#include "CEnemy3.h"
+#include "CSound.h"
 
 //Sphereモデル
 CModel mModelSphere;
 int CSceneGame::Time = 120 * 60;
 int CSceneGame::Score = 0;
 int CSceneGame::EnemyCount = 0;
+//CSoundクラスのインスタンス作成
+CSound Se1;
+CSound Se2;
+CSound Se3;
+CSound Se4;
 
 CSceneGame::CSceneGame()
 {
@@ -40,6 +45,12 @@ void CSceneGame::Init() {
 
 	mBackGround.Load("sky.obj", "sky.mtl");
 
+	//サウンド(wav)ファイルの読み込み
+	Se1.Load("se_chun1 (online-audio-converter.com).wav");
+	Se2.Load("Bullet.wav");
+	Se3.Load("Explosion.wav");
+	Se4.Load("Finish.wav");
+
 	Time = 120 * 60;
 	Score = 0;
 	EnemyCount = 0;
@@ -57,7 +68,7 @@ void CSceneGame::Init() {
 	mModelSphere.Load("sphere.obj", "sphere.mtl");
 
 	//敵機のインスタンス作成
-	new CEnemy3(CVector(0.0f, 5.0f, -25.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
+	new CEnemy(&mModelSphere, CVector(0.0f, 5.0f, -25.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
 	new CEnemy(&mModelSphere, CVector(20.0f, 5.0f, -10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount++;
@@ -186,8 +197,12 @@ void CSceneGame::Render(){
 		mText.DrawString("FINISH!!", -200, 0, 32, 32);
 		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
 		mText.DrawString("PUSH ENTER KEY", -125, -110, 10, 10);
+		//サウンド再生
+		Se4.Play();
 		if (CKey::Once(VK_RETURN)){
 			mScene = EGAME2;
+			//サウンド再生
+			Se1.Play();
 		}
 	}
 
@@ -197,8 +212,12 @@ void CSceneGame::Render(){
 		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
 		mText.DrawString("PUSH ENTER KEY", -125, -110, 10, 10);
 		Time++;
+		//サウンド再生
+		Se4.Play();
 		if (CKey::Once(VK_RETURN)){
 			mScene = EGAME2;
+			//サウンド再生
+			Se1.Play();
 		}
 	}
 

@@ -2,7 +2,10 @@
 #include "CEffect.h"
 #include "CSceneGame.h"
 #include "CSceneGame2.h"
+#include "CSound.h"
 #define HP 1  //耐久値
+
+extern CSound Se3;
 
 //コンストラクタ
 //CEnemy(モデル、位置、回転、拡縮)
@@ -42,6 +45,8 @@ void CEnemy::Collision(CCollider*m, CCollider*o){
 		new CEffect(o->mpParent->mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
 		//削除mEnabled = false;
 		mHp--; //ヒットポイントの減算
+		//サウンド再生
+		Se3.Play();
 		if (mHp <= 0){
 			CSceneGame::EnemyCount--;
 			CSceneGame::Score += 50;

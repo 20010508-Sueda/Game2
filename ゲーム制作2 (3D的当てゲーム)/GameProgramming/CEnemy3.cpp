@@ -2,16 +2,18 @@
 #include "CEffect.h"
 #include "CTaskManager.h"
 #include "CSceneGame2.h"
+#include "CSound.h"
 #define HP 1  //耐久値
 #define OBJ "sphere.obj"  //モデルのファイル
 #define MTL "sphere.mtl"  //モデルのマテリアルファイル
 
 CModel CEnemy3::mModel;   //モデルデータ作成
-int CountFrame;           //敵の動きの反転
+extern CSound Se3;
 
 //デフォルトコンストラクタ
 CEnemy3::CEnemy3()
 :mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
+, mHp(HP)
 {
 	//モデルがないときは読み込む
 	if (mModel.mTriangles.size() == 0)
@@ -40,13 +42,14 @@ CEnemy3::CEnemy3(const CVector& position, const CVector& rotation, const CVector
 
 void CEnemy3::Update(){
 	CountFrame++;
-	if (CountFrame > 120 == 0){
-		if (CountFrame <= 60){
-			mPosition.mX -= 0.1f;
-		}
-		else{
-			mPosition.mX += 0.1f;
-		}
+	if (CountFrame > 120){
+		CountFrame = 0;
+	}
+	if (CountFrame <= 60){
+		mPosition.mX -= 0.1f;
+	}
+	else{
+		mPosition.mX += 0.1f;
 	}
 	CTransform::Update();
 }
@@ -57,6 +60,8 @@ void CEnemy3::Collision(CCollider*m, CCollider*o){
 		new CEffect(o->mpParent->mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
 		//削除mEnabled = false;
 		mHp--; //ヒットポイントの減算
+		//サウンド再生
+		Se3.Play();
 		if (mHp <= 0){
 			CSceneGame2::EnemyCount2--;
 			CSceneGame2::Score2 += 50;

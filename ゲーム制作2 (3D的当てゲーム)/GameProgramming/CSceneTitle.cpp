@@ -1,5 +1,8 @@
 #include "CSceneTitle.h"
 #include "CUtil.h"
+#include "CSound.h"
+
+extern CSound Se1;
 
 //次のシーンの取得
 CScene::EScene CSceneTitle::GetNextScene(){
@@ -27,6 +30,8 @@ void CSceneTitle::Render(){
 	if (CKey::Once(VK_RETURN)){
 		//次のシーンはゲーム
 		mScene = EGAME;
+		//サウンド再生
+		Se1.Play();
 	}
 
 	//2Dの描画終了

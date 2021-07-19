@@ -3,6 +3,9 @@
 #include "CScene.h"
 #include "CKey.h"
 #include "CText.h"
+#include "CSound.h"
+
+extern CSound Se1;
 
 class CSceneTitle :public CScene{
 public:
@@ -15,6 +18,8 @@ public:
 
 	//初期化のオーバーライド
 	void Init(){
+		//サウンド(wav)ファイルの読み込み
+		Se1.Load("se_chun1 (online-audio-converter.com).wav");
 		//シーンの設定
 		mScene = ETITLE;
 	}

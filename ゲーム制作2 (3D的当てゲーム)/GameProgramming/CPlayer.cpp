@@ -3,6 +3,10 @@
 //キークラスのインクルード
 #include "CKey.h"
 #include "CTaskManager.h"
+#include "CSound.h"
+
+//外部変数の参照の作成
+extern CSound Se2;
 
 //更新処理
 void CPlayer::Update(){
@@ -37,6 +41,8 @@ void CPlayer::Update(){
 		bullet->mPosition = CVector(0.0f, 0.0f, 10.0f)*mMatrix;
 		bullet->mRotation = mRotation;
 		bullet->Update();
+		//サウンド再生
+		Se2.Play();
 //		TaskManager.Add(bullet);
 	}
 }

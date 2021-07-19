@@ -13,12 +13,18 @@
 #include "CUtil.h"
 #include "CEnemy2.h"
 #include "CEnemy3.h"
+#include "CEnemy4.h"
+#include "CSound.h"
 
 //Sphereモデル
 CModel mModelSphere2;
 int CSceneGame2::Time2 = 120 * 60;
 int CSceneGame2::Score2 = 0;
 int CSceneGame2::EnemyCount2 = 0;
+
+//外部変数の参照の作成
+extern CSound Se1;
+extern CSound Se4;
 
 CSceneGame2::CSceneGame2()
 {
@@ -57,7 +63,7 @@ void CSceneGame2::Init() {
 	mModelSphere2.Load("sphere.obj", "sphere.mtl");
 
 	//敵機のインスタンス作成
-	new CEnemy(&mModelSphere2, CVector(0.0f, 5.0f, -50.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
+	new CEnemy3(CVector(5.0f, 5.0f, -50.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount2++;
 	new CEnemy(&mModelSphere2, CVector(40.0f, 5.0f, -10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount2++;
@@ -65,11 +71,11 @@ void CSceneGame2::Init() {
 	EnemyCount2++;
 	new CEnemy(&mModelSphere2, CVector(-10.0f, 3.5f, -15.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount2++;
-	new CEnemy(&mModelSphere2, CVector(10.0f, 3.0f, 20.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
+	new CEnemy3(CVector(10.0f, 3.0f, 20.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount2++;
 	new CEnemy(&mModelSphere2, CVector(-10.0f, 7.0f, 10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount2++;
-	new CEnemy(&mModelSphere2, CVector(-20.0f, 4.5f, 5.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
+	new CEnemy3(CVector(-20.0f, 4.5f, 5.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount2++;
 	new CEnemy(&mModelSphere2, CVector(30.0f, 4.5f, 10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount2++;
@@ -77,9 +83,9 @@ void CSceneGame2::Init() {
 	EnemyCount2++;
 	new CEnemy2(CVector(0.0f, 5.0f, 30.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount2++;
-	new CEnemy2(CVector(-40.0f, 5.0f, -10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
+	new CEnemy4(CVector(-40.0f, 5.0f, -10.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount2++;
-	new CEnemy2(CVector(30.0f, 10.0f, -30.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
+	new CEnemy4(CVector(30.0f, 10.0f, -30.0f), CVector(), CVector(0.5f, 0.5f, 0.5f));
 	EnemyCount2++;
 
 	//シーンの設定
@@ -185,8 +191,12 @@ void CSceneGame2::Render(){
 	if (Time2 == 0){
 		mText.DrawString("FINISH!!", -230, 0, 32, 32);
 		mText.DrawString("PUSH ENTER KEY", -190, -60, 15, 15);
+		//サウンド再生
+		Se4.Play();
 		if (CKey::Once(VK_RETURN)){
 			mScene = ETITLE;
+			//サウンド再生
+			Se1.Play();
 		}
 	}
 
@@ -195,8 +205,12 @@ void CSceneGame2::Render(){
 		mText.DrawString("FINISH!!", -200, 0, 32, 32);
 		mText.DrawString("PUSH ENTER KEY", -190, -60, 15, 15);
 		Time2++;
+		//サウンド再生
+		Se4.Play();
 		if (CKey::Once(VK_RETURN)){
 			mScene = ETITLE;
+			//サウンド再生
+			Se1.Play();
 		}
 	}
 

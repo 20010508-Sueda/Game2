@@ -1,19 +1,18 @@
-#include "CEnemy2.h"
+#include "CEnemy4.h"
 #include "CEffect.h"
 #include "CTaskManager.h"
-#include "CSceneGame.h"
 #include "CSceneGame2.h"
 #include "CSound.h"
 #define HP 2  //耐久値
 #define OBJ "sphere.obj"  //モデルのファイル
 #define MTL "sphere2.mtl"  //モデルのマテリアルファイル
 
-CModel CEnemy2::mModel;   //モデルデータ作成
+CModel CEnemy4::mModel;   //モデルデータ作成
 extern CSound Se3;
 
 //デフォルトコンストラクタ
-CEnemy2::CEnemy2()
-:mCollider(this, &mMatrix, CVector(0.0f,0.0f,0.0f),0.5f)
+CEnemy4::CEnemy4()
+:mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
 , mHp(HP)
 {
 	//モデルがないときは読み込む
@@ -27,8 +26,8 @@ CEnemy2::CEnemy2()
 
 //コンストラクタ
 //CEnemy(位置、回転、拡縮)
-CEnemy2::CEnemy2(const CVector& position,const CVector& rotation,const CVector& scale)
-:CEnemy2()
+CEnemy4::CEnemy4(const CVector& position, const CVector& rotation, const CVector& scale)
+:CEnemy4()
 {
 	//位置、回転、拡縮を設定する
 	mPosition = position;
@@ -41,7 +40,21 @@ CEnemy2::CEnemy2(const CVector& position,const CVector& rotation,const CVector& 
 	CTaskManager::Get()->Add(this); //追加する
 }
 
-void CEnemy2::Collision(CCollider*m, CCollider*o){
+void CEnemy4::Update(){
+	CountFrame++;
+	if (CountFrame > 120){
+		CountFrame = 0;
+	}
+	if (CountFrame <= 60){
+		mPosition.mY += 0.1f;
+	}
+	else{
+		mPosition.mY -= 0.1f;
+	}
+	CTransform::Update();
+}
+
+void CEnemy4::Collision(CCollider*m, CCollider*o){
 	if (CCollider::Collision(m, o)){
 		//エフェクト生成
 		new CEffect(o->mpParent->mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
@@ -50,8 +63,6 @@ void CEnemy2::Collision(CCollider*m, CCollider*o){
 		//サウンド再生
 		Se3.Play();
 		if (mHp <= 0){
-			CSceneGame::EnemyCount--;
-			CSceneGame::Score += 100;
 			CSceneGame2::EnemyCount2--;
 			CSceneGame2::Score2 += 100;
 			mEnabled = false;
