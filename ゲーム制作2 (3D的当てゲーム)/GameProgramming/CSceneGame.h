@@ -27,6 +27,8 @@ public:
 
 	int Count;
 
+	int Count3;
+
 	CVector mEye;
 
 	//モデルクラスのインスタンス作成

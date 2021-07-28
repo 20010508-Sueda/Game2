@@ -31,6 +31,7 @@ CSceneGame::CSceneGame()
 	mText.LoadTexture("FontWhite.tga", 1, 64);
 
 	Count = 1;
+	Count3 = 1;
 }
 
 CSceneGame::~CSceneGame(){
@@ -198,7 +199,10 @@ void CSceneGame::Render(){
 		mText.DrawString("NEXT STAGE", -130, -60, 15, 15);
 		mText.DrawString("PUSH ENTER KEY", -125, -110, 10, 10);
 		//サウンド再生
-		Se4.Play();
+		if (Count3 > 0){
+			Se4.Play();
+			Count3--;
+		}
 		if (CKey::Once(VK_RETURN)){
 			mScene = EGAME2;
 			//サウンド再生
@@ -213,7 +217,10 @@ void CSceneGame::Render(){
 		mText.DrawString("PUSH ENTER KEY", -125, -110, 10, 10);
 		Time++;
 		//サウンド再生
-		Se4.Play();
+		if (Count3 > 0){
+			Se4.Play();
+			Count3--;
+		}
 		if (CKey::Once(VK_RETURN)){
 			mScene = EGAME2;
 			//サウンド再生
