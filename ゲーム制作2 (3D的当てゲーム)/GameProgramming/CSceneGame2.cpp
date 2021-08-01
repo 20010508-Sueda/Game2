@@ -18,7 +18,7 @@
 
 //Sphereƒ‚ƒfƒ‹
 CModel mModelSphere2;
-int CSceneGame2::Time2 = 120 * 60;
+int CSceneGame2::Time2 = 60 * 60;
 int CSceneGame2::Score2 = 0;
 int CSceneGame2::EnemyCount2 = 0;
 
@@ -47,7 +47,7 @@ void CSceneGame2::Init() {
 
 	mBackGround.Load("sky.obj", "sky.mtl");
 
-	Time2 = 120 * 60;
+	Time2 = 60 * 60;
 	Score2 = 0;
 	EnemyCount2 = 0;
 

@@ -16,7 +16,7 @@
 
 //Sphereモデル
 CModel mModelSphere;
-int CSceneGame::Time = 120 * 60;
+int CSceneGame::Time = 60 * 60;
 int CSceneGame::Score = 0;
 int CSceneGame::EnemyCount = 0;
 //CSoundクラスのインスタンス作成
@@ -52,7 +52,7 @@ void CSceneGame::Init() {
 	Se3.Load("Explosion.wav");
 	Se4.Load("Finish.wav");
 
-	Time = 120 * 60;
+	Time = 60 * 60;
 	Score = 0;
 	EnemyCount = 0;
 

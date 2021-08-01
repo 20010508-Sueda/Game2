@@ -1,0 +1,50 @@
+﻿2021/07/29 19:06:30 にビルドを開始しました。
+     1>ノード 2 上のプロジェクト "C:\Users\maya\Desktop\ゲーム制作2(Gitリポジトリ)\Game2\ゲーム制作2 (3D的当てゲーム)\GameProgramming\GameProgramming.vcxproj" (Build ターゲット)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /Gm- /EHsc /RTC1 /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CSceneTitle.cpp
+         CSceneTitle.cpp
+     1>c:\users\maya\desktop\ゲーム制作2(gitリポジトリ)\game2\ゲーム制作2 (3d的当てゲーム)\gameprogramming\CSound.h(66): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : 'strcpy' の宣言を確認してください。
+     1>c:\users\maya\desktop\ゲーム制作2(gitリポジトリ)\game2\ゲーム制作2 (3d的当てゲーム)\gameprogramming\CSound.h(101): warning C4101: 'cnt' : ローカル変数は 1 度も使われていません。
+     1>c:\users\maya\desktop\ゲーム制作2(gitリポジトリ)\game2\ゲーム制作2 (3d的当てゲーム)\gameprogramming\CSound.h(101): warning C4101: 'dw' : ローカル変数は 1 度も使われていません。
+     1>c:\users\maya\desktop\ゲーム制作2(gitリポジトリ)\game2\ゲーム制作2 (3d的当てゲーム)\gameprogramming\CSound.h(100): warning C4101: 'state' : ローカル変数は 1 度も使われていません。
+     1>CSceneTitle.cpp(25): warning C4101: 'buf' : ローカル変数は 1 度も使われていません。
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\maya\Desktop\ゲーム制作2(Gitリポジトリ)\Game2\ゲーム制作2 (3D的当てゲーム)\Release\GameProgramming.exe" /INCREMENTAL:NO /NOLOGO glew32.lib glfw3.lib glfw3dll.lib glut32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\maya\Desktop\ゲーム制作2(Gitリポジトリ)\Game2\ゲーム制作2 (3D的当てゲーム)\Release\GameProgramming.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\maya\Desktop\ゲーム制作2(Gitリポジトリ)\Game2\ゲーム制作2 (3D的当てゲーム)\Release\GameProgramming.lib" /MACHINE:X86 /SAFESEH Release\CBillBoard.obj
+         Release\CBullet.obj
+         Release\CCamera.obj
+         Release\CCharacter.obj
+         Release\CCollider.obj
+         Release\CCollisionManager.obj
+         Release\CEffect.obj
+         Release\CEnemy.obj
+         Release\CEnemy2.obj
+         Release\CEnemy3.obj
+         Release\CEnemy4.obj
+         Release\CKey.obj
+         Release\CMaterial.obj
+         Release\CMatrix.obj
+         Release\CModel.obj
+         Release\CPlayer.obj
+         Release\CSceneGame.obj
+         Release\CSceneGame2.obj
+         Release\CSceneManager.obj
+         Release\CSceneTitle.obj
+         Release\CSound.obj
+         Release\CTaskManager.obj
+         Release\CText.obj
+         Release\CTexture.obj
+         Release\CTransform.obj
+         Release\CTriangle.obj
+         Release\CUtil.obj
+         Release\CVector.obj
+         Release\Update.obj
+         Release\main.obj
+         コード生成しています。
+         コード生成が終了しました。
+         GameProgramming.vcxproj -> C:\Users\maya\Desktop\ゲーム制作2(Gitリポジトリ)\Game2\ゲーム制作2 (3D的当てゲーム)\Release\GameProgramming.exe
+     1>プロジェクト "C:\Users\maya\Desktop\ゲーム制作2(Gitリポジトリ)\Game2\ゲーム制作2 (3D的当てゲーム)\GameProgramming\GameProgramming.vcxproj" (Build ターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+
+経過時間 00:00:01.77

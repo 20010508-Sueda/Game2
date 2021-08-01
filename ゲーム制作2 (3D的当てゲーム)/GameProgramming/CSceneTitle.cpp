@@ -25,7 +25,7 @@ void CSceneTitle::Render(){
 	char buf[64];
 
 	//•¶š—ñ‚Ì•`‰æ
-	mText.DrawString("TITLE", -200, 0, 50, 50);
+	mText.DrawString("AIM TARGET!!", -320, 0, 30, 30);
 	mText.DrawString("PUSH ENTER KEY", -200, -100, 16, 16);
 	if (CKey::Once(VK_RETURN)){
 		//Ÿ‚ÌƒV[ƒ“‚ÍƒQ[ƒ€
